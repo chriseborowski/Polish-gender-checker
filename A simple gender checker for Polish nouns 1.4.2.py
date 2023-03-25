@@ -9,7 +9,7 @@ masc = ("b", "c", "ć", "d", "f", "g", "h", "j", "k", "l", "ł", "m", "n", "ń",
 
 # neuter category
 
-neut = ("e", "ę", "o", "u", "bby", "taxi", "kiwi", "ndi", "nei", "lawi")
+neut = ("e", "ę", "o", "u", "um", "bby", "taxi", "kiwi", "ndi", "nei", "lawi")
 
 # virile category
 
