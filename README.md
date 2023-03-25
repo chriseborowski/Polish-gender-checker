@@ -9,8 +9,8 @@ This version of the program works for nouns in the following categories:<br>
 (a) masculine singular,<br>
 (b) feminine singular,<br>
 (c) neuter singular,<br>
-(d) masculine (virile) singular,<br>
-(e) nonmasculine (virile) singular.<br>
+(d) masculine (virile) plural,<br>
+(e) nonmasculine (virile) plural.<br>
 
 Version history<br>
 v. 1.0 - basic version of the program developed<br>
