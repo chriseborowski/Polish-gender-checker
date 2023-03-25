@@ -22,24 +22,29 @@ virile = ("i", "isci", "iści", "cy", "dzi", "dzy", "rzy", "si", "zi", "owie", "
 nonvirile = ("osci", "ości", "by", "dy", "fy", "gi", "hy", "ki", "ly", "ły", "my", "ny"
              , "py", "ry", "sy", "szy", "ty", "wy", "zy", "że", "onie", "sie", "zie"
              , "le", "je", "pie", "bie", "mie", "awie", "oce", "acze", "ecze", "ocze"
-             , "ucze", "ycze", "dze", "edzie", "ędzie", "dże", "sze", "erze", "urze", "dzieci")
+             , "ucze", "ycze", "dze", "edzie", "ędzie", "dże", "sze", "erze", "urze"
+             , "dzieci", "ęta", "eta")
 
 # Exceptions categories
 # masculine exceptions category
 
-masc_exceptions = ("mężczyzna", "mezczyzna", "sędzia", "sedzia", "wojewoda", "hrabia"
-, "satelita", "ysta", "ista", "nauta", "beksa", "niezdara", "łamaga", "lamaga", "oferma"
+masc_exceptions = ("mężczyzna", "mezczyzna", "sędzia", "sedzia", "wojewoda", "hrabia", "satelita"
+                   , "ysta", "ista", "nauta", "beksa", "niezdara", "łamaga", "oferma"
                    , "szko", "oźny", "gość", "gosc")
 
 # feminine exceptions category
 
 fem_exceptions = ("ani", "ini", "ań", "aśń", "asn", "eśń", "esn", "aść", "asc", "iść"
-                  , "isc", "ość", "osc", "dź", "miedź", "miedz", "moc", "noc", "klacz"
+                  , "isc", "ość", "osc", "dź")
+
+# feminine word exceptions category
+
+fem_word_exceptions = ("miedź", "miedz", "moc", "noc", "klacz"
                   , "ciecz", "rzecz", "dzicz", "smycz", "kokorycz", "Bydgoszcz"
                   , "goszcz", "brać", "brac", "chuć", "chuc", "jać", "jac", "mać", "mac"
                   , "płeć", "plec", "sieć", "siec", "czeladź", "czeladz", "gołoledź"
-                  , "gololedz", "krawędź", "krawedz", "łódź", "lodz", "powódź", "powodz"
-                  , "odpowiedź", "odpowiedz", "spowiedź", "spowiedz", "wypowiedź", "wypowiedz"
+                  , "gololedz", "krawędź", "łódź", "lodz", "powódź", "powodz", "odpowiedź"
+                  , "odpowiedz", "spowiedź", "spowiedz", "wypowiedź", "wypowiedz"
                   , "zapowiedź", "zapowiedz", "kolej", "kąpiel", "kapiel", "myśl", "mysl"
                   , "baśń", "basn", "czerń", "czern", "czerwień", "czerwien", "dłoń", "dlon"
                   , "goleń", "golen", "jaźń", "jazn", "jesień", "jesien", "kieszeń", "kieszen"
@@ -47,42 +52,46 @@ fem_exceptions = ("ani", "ini", "ań", "aśń", "asn", "eśń", "esn", "aść", 
                   , "piesn", "pleśń", "plesn", "przestrzeń", "przestrzen", "przyjaźń", "przyjazn"
                   , "przystań", "przystan", "skroń", "skron", "waśń", "wasn", "woń", "won"
                   , "zieleń", "zielen", "gołdap", "goldap", "macierz", "twarz", "mysz", "wesz"
-                  , "białoruś", "bialorus", "ruś", "rus", "wieś", "wies", "gałąź", "galaz", "rzeź"
+                  , "białoruś", "bialorus", "ruś", "wieś", "wies", "gałąź", "galaz", "rzeź"
                   , "rzez", "grabież", "grabiez", "mlodzież", "mlodziez", "odzież", "odziez"
                   , "podaż", "podaz", "sprzedaż", "sprzedaz", "straż", "straz", "uprząż"
                   , "uprzaz", "brew", "brukiew", "marchew", "konew", "krew", "rukiew", "rzodkiew"
-                  , "żagiew", "zagiew", "chorągiew", "choragiew")
+                  , "żagiew", "zagiew", "chorągiew", "choragiew", "mięta", "mieta," "pięta"
+                  , "pieta", "renta", "zachęta", "zacheta")
 
-# The input form
+# input form
 word = input("Please enter your Polish noun in its dictionary (nominative) form: ").lower()
 
 print("You entered:",word.upper())
 print()
 
-# execute masculine exceptions category
+# execute feminine word exceptions category
 
-if word.endswith(masc_exceptions) or any(word.endswith(suffix) for suffix in masc_exceptions):
-    print("This word is masculine, singular.")
+if word.endswith(fem_word_exceptions) or any(word.endswith(suffix) for suffix in fem_word_exceptions):
+    print("This word is feminine, singular.")
 
 # execute feminine exceptions category
 
 elif word.endswith(fem_exceptions) or any(word.endswith(suffix) for suffix in fem_exceptions):
     print("This word is feminine, singular.")
+    
+# execute masculine exceptions category
 
-# feminine category
-elif word.endswith("a"):
-    print("This word is feminine, singular.")
+elif word.endswith(masc_exceptions) or any(word.endswith(suffix) for suffix in masc_exceptions):
+    print("This word is masculine, singular.")
 
 # masculine category
 
 elif word.endswith(masc) or any(word.endswith(suffix) for suffix in masc):
     print("This word is masculine, singular.")
 
-#non-virile category
+# non-virile category
 
-elif word.endswith(nonvirile) or any(word.endswith(suffix) for suffix in nonvirile):
+elif word.endswith(nonvirile) or any(word.endswith(suffix) for suffix in nonvirile) and word not in fem_exceptions or fem_word_exceptions:
     print("This word is non-virile, plural.")
-    
+
+# virile category
+
 elif word.endswith(virile) or any(word.endswith(suffix) for suffix in virile):
     print("This word is virile, plural.")
 
@@ -90,6 +99,10 @@ elif word.endswith(virile) or any(word.endswith(suffix) for suffix in virile):
 
 elif word.endswith(neut) or any(word.endswith(suffix) for suffix in neut):
     print("This word is neuter, singular.")
+
+# feminine category
+elif word.endswith("a"):
+    print("This word is feminine, singular.")
 
 else:
     print("Looks like the word you entered may not be a noun in Polish. Check the word you entered to make sure it is in a dictionary form.")
