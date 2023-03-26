@@ -19,4 +19,4 @@ v. 1.2 - feminine exceptions added<br>
 v. 1.3 - masculine plural nouns added (virile and non-virile)<br>
 v. 1.4.1 - source code simplified and reduced by ~30% to optimize performance<br>
 v. 1.4.2 - neuter category updated<br>
-v. 1.5.1 - 2-step algorithm adopted (singular vs. plural), updated plural categories to increase gender recognition
+v. 1.5.0 - 2-step algorithm adopted (singular vs. plural), updated plural categories to increase gender recognition
