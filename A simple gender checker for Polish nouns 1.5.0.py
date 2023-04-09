@@ -62,6 +62,8 @@ choice = input("Is this a singular [S] or plural [P] word?\n")
 
 # This code checks for grammatical gender based on the user's input
 if choice.lower() == "s":
+  
+  # check for feminine or masculine exceptions
   if word in feminine_word_exceptions or any(
       word.endswith(suffix) for suffix in feminine_word_exceptions):
     print("This is a feminine word.")
@@ -70,18 +72,30 @@ if choice.lower() == "s":
     print("This is a feminine word.")
   elif word in masculine_exceptions:
     print("This is a masculine word.")
+  
+  # regular neuter nouns
   elif word.endswith(neuter) or any(word.endswith(suffix) for suffix in neuter):
     print("This is a neuter word.")
+  
+  # regular masculine nouns
   elif word.endswith(masculine):
     print("This is a masculine word.")
+  
+  # regular feminine nouns
   elif word.endswith("a"):
     print("This is a feminine word.")
   else:
     print("Please check your number selection or spelling and try again.")
+
+# plural nouns checker starts here
 elif choice.lower() == "p":
+  
+  # regular nonmasculine (nonvirile) plural nouns
   if word.endswith(nonvirile) or any(
       word.endswith(suffix) for suffix in nonvirile):
     print("This is a non-virile word.")
+  
+  # regular masculine (virile) plural nouns
   elif word.endswith(virile) or any(
       word.endswith(suffix) for suffix in virile):
     print("This is a virile word.")
