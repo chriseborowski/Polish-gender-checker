@@ -3,11 +3,11 @@
 
 # Regular categories
 # masculine category
-masc = ("b", "c", "ć", "d", "f", "g", "h", "j", "k", "l", "ł", "m", "n", "ń",
+masculine = ("b", "c", "ć", "d", "f", "g", "h", "j", "k", "l", "ł", "m", "n", "ń",
         "p", "r", "s", "ś", "t", "w", "x", "z", "ź", "ż")
 
 # neuter category
-neut = ("e", "ę", "o", "u", "um", "bby", "taxi", "kiwi", "ndi", "nei", "lawi")
+neuter = ("e", "ę", "o", "u", "um", "bby", "taxi", "kiwi", "ndi", "nei", "lawi")
 
 # virile category
 virile = ("i", "isci", "iści", "cy", "dzi", "dzy", "rzy", "si", "zi", "owie",
@@ -25,17 +25,17 @@ nonvirile = ("osci", "ości", "by", "dy", "fy", "gi", "hy", "ki", "ly", "ły",
 
 # Exceptions categories
 # masculine exceptions category
-masc_exceptions = ("mężczyzna", "mezczyzna", "sędzia", "sedzia", "wojewoda",
+masculine_exceptions = ("mężczyzna", "mezczyzna", "sędzia", "sedzia", "wojewoda",
                    "hrabia", "satelita", "ysta", "ista", "nauta", "beksa",
                    "niezdara", "łamaga", "oferma", "szko", "oźny", "gość",
                    "gosc")
 
 # feminine exceptions category
-fem_exceptions = ("ani", "ini", "ań", "aśń", "asn", "eśń", "esn", "aść", "asc",
+feminine_exceptions = ("ani", "ini", "ań", "aśń", "asn", "eśń", "esn", "aść", "asc",
                   "iść", "isc", "ość", "osc", "dź")
 
 # feminine word exceptions category
-fem_word_exceptions = (
+feminine_word_exceptions = (
   "miedź", "miedz", "moc", "noc", "klacz", "ciecz", "rzecz", "dzicz", "smycz",
   "kokorycz", "Bydgoszcz", "goszcz", "brać", "brac", "chuć", "chuc", "jać",
   "jac", "mać", "mac", "płeć", "plec", "sieć", "siec", "czeladź", "czeladz",
@@ -60,18 +60,19 @@ word = input("Enter a word: \n")
 print("You entered:", word.upper())
 choice = input("Is this a singular [S] or plural [P] word?\n")
 
+# This code checks for grammatical gender based on the user's input
 if choice.lower() == "s":
-  if word in fem_word_exceptions or any(
-      word.endswith(suffix) for suffix in fem_word_exceptions):
+  if word in feminine_word_exceptions or any(
+      word.endswith(suffix) for suffix in feminine_word_exceptions):
     print("This is a feminine word.")
-  elif word.endswith(fem_exceptions) or any(
-      word.endswith(suffix) for suffix in fem_exceptions):
+  elif word.endswith(feminine_exceptions) or any(
+      word.endswith(suffix) for suffix in feminine_exceptions):
     print("This is a feminine word.")
-  elif word in masc_exceptions:
+  elif word in masculine_exceptions:
     print("This is a masculine word.")
-  elif word.endswith(neut) or any(word.endswith(suffix) for suffix in neut):
+  elif word.endswith(neuter) or any(word.endswith(suffix) for suffix in neuter):
     print("This is a neuter word.")
-  elif word.endswith(masc):
+  elif word.endswith(masculine):
     print("This is a masculine word.")
   elif word.endswith("a"):
     print("This is a feminine word.")
