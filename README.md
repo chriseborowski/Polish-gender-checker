@@ -1,7 +1,7 @@
 # polish-gender-checker
 Gender checker for Polish-language words.
 
-This is a program that checks the grammatical gender of the input noun in Polish.
+This is a program that checks the grammatical gender of the input noun in Polish. The source code was last reviewed and updated on 4.9.2023.
 
 This version of the program works for nouns in the following categories:<br>
 (a) masculine singular,<br>
